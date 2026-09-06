@@ -11,5 +11,6 @@ you attempt to choose. Try it out [here](https://nmay231.github.io/2hol-names/).
 
 ## Updating
 1. `./sync.sh`
-2. `git push ...`
-3. Hosted by GitHub pages
+2. Update version and date `docs/index.html`
+3. `git push ...`
+4. Hosted by GitHub pages
