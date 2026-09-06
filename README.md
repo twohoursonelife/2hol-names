@@ -10,7 +10,7 @@ This simple web app allows you to see what name you will get based on the name
 you attempt to choose. Try it out [here](https://nmay231.github.io/2hol-names/).
 
 ## Updating
-1. `./sync.sh`
+1. `./sync.sh ../OneLife`
 2. Update version and date `docs/index.html`
 3. `git push ...`
 4. Hosted by GitHub pages
