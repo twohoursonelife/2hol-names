@@ -90,6 +90,22 @@ export const subString = (inNameList, inOffset) => {
 }
 
 /**
+ * Pick a name uniformly from a newline-separated name list.
+ *
+ * @param {string} nameList
+ * @param {() => number} randomSource
+ * @returns {string}
+ */
+export const pickRandomName = (nameList, randomSource = Math.random) => {
+    const names = nameList.split(/\r?\n/).filter(name => name.length > 0);
+    if (names.length === 0) {
+        return "";
+    }
+
+    return names[Math.floor(randomSource() * names.length)];
+}
+
+/**
  * @param {string} a
  * @param {string} b
  * @returns {number} -1, 0, or 1 depending on alphabetical order

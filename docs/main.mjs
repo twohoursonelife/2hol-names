@@ -1,8 +1,9 @@
-import { findClosestName, getNameOffsetBack, getNameOffsetForward, sharedPrefix, subString } from "./lib.mjs";
+import { findClosestName, getNameOffsetBack, getNameOffsetForward, pickRandomName, sharedPrefix, subString } from "./lib.mjs";
 
 const lastNameSelected = document.getElementById("first-or-last-last");
 const firstNameSelected = document.getElementById("first-or-last-first");
 const nameSearch = document.getElementById("name-search");
+const pickNameButton = document.getElementById("pick-name");
 
 let firstNames;
 let lastNames;
@@ -109,4 +110,16 @@ const nameSearchHandler = () => {
 
 nameSearch.addEventListener("input", nameSearchHandler);
 
-Promise.all(namesLoadedPromises).then(() => nameSearchHandler());
+const pickNameHandler = () => {
+    const nameList = searchType === "last" ? lastNames : firstNames;
+    nameSearch.value = pickRandomName(nameList);
+    nameSearchHandler();
+    nameSearch.focus();
+}
+
+pickNameButton.addEventListener("click", pickNameHandler);
+
+Promise.all(namesLoadedPromises).then(() => {
+    pickNameButton.disabled = false;
+    nameSearchHandler();
+});
